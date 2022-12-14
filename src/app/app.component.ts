@@ -31,10 +31,10 @@ export class AppComponent {
   getData(): void {
     let tmp = [];
     this.http
-      .get<any>('https://jsonplaceholder.typicode.com/users')
+      .get<any>('https://mocki.io/v1/39ed390e-cdde-494e-87c8-34c12c374de2')
       .subscribe((data) => {
         for (let i = 0; i < data.length; i++) {
-          tmp.push({ item_id: i, item_text: data[i].name });
+          tmp.push({ item_id: i, item_text: data[i].department });
         }
         this.dropdownList = tmp;
       });
