@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'my-app',
@@ -27,16 +25,25 @@ export class AppComponent {
       allowSearchFilter: true,
     };
   }
+  // public data: string[] = [
+  //   'Badminton',
+  //   'Basketball',
+  //   'Cricket',
+  //   'Golf',
+  //   'Hockey',
+  //   'Rugby',
+  // ];
 
+  //these are default dropdownsettings
   getData(): void {
     let tmp = [];
     this.http
       .get<any>('https://mocki.io/v1/39ed390e-cdde-494e-87c8-34c12c374de2')
       .subscribe((data) => {
         for (let i = 0; i < data.length; i++) {
-          tmp.push({ item_id: i, item_text: data[i].department });
+          tmp.push({ item_id: i, item_text: data[i].name });
         }
-        this.dropdownList = tmp;
+        this.dropdownList = data;
       });
   }
 }
