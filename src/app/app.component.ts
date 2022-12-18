@@ -43,7 +43,7 @@ export class AppComponent {
         for (let i = 0; i < data.length; i++) {
           tmp.push({ item_id: i, item_text: data[i].name });
         }
-        this.dropdownList = data;
+        this.dropdownList = tmp;
       });
   }
 }
