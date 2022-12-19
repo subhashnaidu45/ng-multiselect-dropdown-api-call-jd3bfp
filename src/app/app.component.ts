@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { of, Observable } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 
 @Component({
   selector: 'my-app',
@@ -41,9 +43,24 @@ export class AppComponent {
       .get<any>('https://mocki.io/v1/39ed390e-cdde-494e-87c8-34c12c374de2')
       .subscribe((data) => {
         for (let i = 0; i < data.length; i++) {
-          tmp.push({ item_id: i, item_text: data[i].name });
+          tmp.push({ item_id: i, item_text: data[i].department });
         }
         this.dropdownList = tmp;
       });
   }
 }
+
+//   getData(): Observable<number | null> {
+//     let tmp = [];
+//     return this.http
+//       .get<any>('https://mocki.io/v1/39ed390e-cdde-494e-87c8-34c12c374de2')
+//       .pipe(
+//         map((data) => {
+//           for (let i = 0; i < data.length; i++) {
+//             return tmp.push({ item_id: i, item_text: data[i].name });
+//           }
+//           this.dropdownList = tmp;
+//         })
+//       );
+//   }
+// }
