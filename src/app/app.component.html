@@ -14,10 +14,30 @@
           required
         />
       </div>
-      <div class="alert alert-danger" *ngIf=""></div>
+      <div
+        class="alert alert-danger"
+        *ngIf="userName.invalid && (userName.touched || userName.dirty)"
+      >
+        Error
+      </div>
       <div class="form-group grid-item col-md">
         <label for="pwd">Password:</label>
-        <input type="password" class="form-control" id="pwd" />
+        <input
+          type="password"
+          class="form-control"
+          id="pwd"
+          name="passWord"
+          #passWord="ngModel"
+          pattern="^[a-zA-Z].{6,}"
+          ngModel
+          required
+        />
+      </div>
+      <div
+        class="alert alert-danger"
+        *ngIf="passWord.invalid && (passWord.touched || passWord.dirty)"
+      >
+        Error
       </div>
     </div>
     <br />
@@ -89,11 +109,17 @@
         </label>
       </div>
     </div>
-
+    <br />
     <!-- <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
 <label for="vehicle1"> I have a bike</label><br /> -->
     <!-- these all are callback functions -->
 
     <!-- <input type="radio" /> {{ tmp }} -->
+
+    <div class="row">
+      <div class="col grid-item" style="align:center">
+        <button type="submit" class="btn btn-secondary">submit</button>
+      </div>
+    </div>
   </div>
 </form>
